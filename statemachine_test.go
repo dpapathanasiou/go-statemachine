@@ -14,12 +14,13 @@
 // the events they handle. This function is relatively trivial, and does not require using a state machine. 
 // But it illustrates the concept well."
 
-package main
+package statemachine_test
 
 import (
     "fmt"
     "math"
     "github.com/dpapathanasiou/go-statemachine"
+	"testing"
 )
 
 func do_math(i float64) float64 {
@@ -110,7 +111,7 @@ func twenties_counter() statemachine.Handler {
     }
 }
 
-func main() {
+func TestStateMachine(t *testing.T) {
     m := statemachine.Machine{map[string]statemachine.Handler{}, "ones", map[string]bool{}}
     m.AddState("ones", ones_counter())
     m.AddState("tens", tens_counter())
